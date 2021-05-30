@@ -1,0 +1,8 @@
+<a [routerLink]="[path]" class="link flex items-center block w-full justify-start"
+  [ngClass]="{'flex-row-reverse': justify != 'start'}">
+  <span class="mr-1 text-xl transition duration-300 rounded-full w-7 block text-center">
+    {{ justify == "end" ? '>' : '<' }} </span>
+      <p class="h-5">
+        {{ txt }}
+      </p>
+</a>

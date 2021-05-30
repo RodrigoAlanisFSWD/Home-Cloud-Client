@@ -1,0 +1,5 @@
+<input [ngClass]="{ 'border': error , 'border-red-600': error, 'rounded-t': error, 'rounded': !error }"
+  class="input w-full h-12 mt-8 outline-none text-gray-400 pl-4" [placeholder]="placeholder">
+<div *ngIf="error" class="w-full h-auto bg-red-600 p-2 text-white rounded-b">
+  Please Enter A Valid Entry
+</div>
