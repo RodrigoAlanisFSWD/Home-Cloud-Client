@@ -6,6 +6,8 @@ import { LoginPageComponent } from 'src/app/components/pages/login-page/login-pa
 import { InputComponent } from 'src/app/components/layout/input/input.component';
 import { ButtonComponent } from 'src/app/components/layout/button/button.component';
 import { LinkComponent } from 'src/app/components/layout/link/link.component';
+import { RegisterPageComponent } from 'src/app/components/pages/register-page/register-page.component';
+import { FileInputComponent } from 'src/app/components/layout/file-input/file-input.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { LinkComponent } from 'src/app/components/layout/link/link.component';
     LoginPageComponent,
     InputComponent,
     ButtonComponent,
-    LinkComponent
+    LinkComponent,
+    RegisterPageComponent,
+    FileInputComponent
   ],
   imports: [
     CommonModule,
