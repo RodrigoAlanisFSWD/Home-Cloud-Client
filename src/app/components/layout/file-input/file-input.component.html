@@ -1,13 +1,16 @@
-<label [ngClass]="{ 'border': error , 'border-red-600': error, 'rounded-t': error, 'rounded': !error }" for="avatar"
-  class="block input w-full h-12 mt-8 outline-none text-gray-400 pl-4 rounded flex items-center">
-  Select
-  An
-  Avatar
-</label>
-<div *ngIf="error" class="w-full h-auto bg-red-600 p-2 text-white rounded-b">
-  Please Enter A Valid Entry
+<div [formGroup]="form">
+  <label [ngClass]="{ 'border': error , 'border-red-600': error, 'rounded-t': error, 'rounded': !error }" for="avatar"
+    class="block input w-full h-12 mt-8 outline-none text-gray-400 pl-4 rounded flex items-center">
+    Select
+    An
+    Avatar
+  </label>
+  <div *ngIf="error" class="w-full h-auto bg-red-600 p-2 text-white rounded-b">
+    Please Enter A Valid Entry
+  </div>
+  <input [formControlName]="control" class="hidden" type="file" id="avatar">
+  <span *ngIf="!error" class="text-gray-400 mt-1 text-left w-full">
+    File Selected: image.png
+  </span>
+
 </div>
-<input class="hidden" type="file" id="avatar">
-<span *ngIf="!error" class="text-gray-400 mt-1 text-left w-full">
-  File Selected: image.png
-</span>

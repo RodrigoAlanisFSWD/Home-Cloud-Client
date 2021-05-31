@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-file-input',
@@ -7,9 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FileInputComponent implements OnInit {
 
-  @Input() error: boolean = false;
+  @Input() error: any = false;
+  @Input() control: string = "avatar";
+  @Input() errorMsg: string = "";
+  @Input() form: any;
 
-  constructor() { }
+  constructor(private _fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
   }

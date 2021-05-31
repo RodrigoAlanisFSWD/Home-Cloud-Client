@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -8,7 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputComponent implements OnInit {
 
   @Input() placeholder: String = '';
-  @Input() error: boolean = false;
+  @Input() error: boolean | undefined = false;
+  @Input() control: string = "username";
+  @Input() form: any;
+  @Input() errorMsg: string = "";
 
   constructor() { }
 

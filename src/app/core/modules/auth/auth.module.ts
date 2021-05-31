@@ -8,7 +8,11 @@ import { ButtonComponent } from 'src/app/components/layout/button/button.compone
 import { LinkComponent } from 'src/app/components/layout/link/link.component';
 import { RegisterPageComponent } from 'src/app/components/pages/register-page/register-page.component';
 import { FileInputComponent } from 'src/app/components/layout/file-input/file-input.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { HttpClientModule } from '@angular/common/http'
+import { UserService } from '../../services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,14 @@ import { FileInputComponent } from 'src/app/components/layout/file-input/file-in
   imports: [
     CommonModule,
     AuthRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    AuthService,
+    UserService,
+    CookieService
   ]
 })
 export class AuthModule { }
