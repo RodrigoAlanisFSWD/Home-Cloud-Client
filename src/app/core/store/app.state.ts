@@ -1,5 +1,5 @@
-import { UserState } from "./reducers/user.reducer";
+import { User } from "../types/user.model";
 
 export interface AppState {
-  readonly user: UserState
+  readonly user: User
 }
