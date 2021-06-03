@@ -25,7 +25,9 @@ export class HomePageComponent implements OnInit {
       updated_at: new Date(),
       token: "",
     }
-    store.select('user').subscribe(user => this.user = user);
+    store.select('user').subscribe((user: User) => {
+      this.user = user
+    });
   }
 
   ngOnInit(): void {

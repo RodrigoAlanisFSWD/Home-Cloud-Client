@@ -54,8 +54,8 @@ export class RegisterPageComponent implements OnInit {
         }
       });
 
-      this.cookie.set("@cloud/token", res.token, {domain: "localhost", path: '/'});
-      this.cookie.set("@cloud/refresh", res.refresh, {domain: "localhost", path: '/'});
+      this.cookie.set("cloud-token", res.token, {domain: "localhost", path: '/'});
+      this.cookie.set("cloud-refresh", res.refresh, {domain: "localhost", path: '/'});
       this._user.setUser(res.token);
       this.router.navigate(["/home"])
     })

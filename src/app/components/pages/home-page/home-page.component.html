@@ -1,1 +1,21 @@
-{{ user.username }}
+<div class="nav w-screen items-center h-20 flex justify-between">
+  <h1 class="col-span-2 ml-5 block text-white text-3xl font-bold">
+    SlimeCloud
+  </h1>
+  <div class="flex w-3/5 justify-end items-center h-full">
+    <app-button class="col-start-8 col-end-9 w-1/4 mr-5" [primary]="true" text="Upload"></app-button>
+    <app-button class="text-white col-start-9 col-end-10 w-1/4 mr-5" text="Create Dir"></app-button>
+
+    <img class="rounded-full w-16 mr-5" [src]="user.avatar.replace('3', '5')" />
+  </div>
+</div>
+
+<div class="grid grid-cols-5 gap-8 mt-5 px-5">
+  <app-item></app-item>
+  <app-item></app-item>
+  <app-item></app-item>
+  <app-item></app-item>
+  <app-item></app-item>
+  <app-item></app-item>
+  <app-item></app-item>
+</div>

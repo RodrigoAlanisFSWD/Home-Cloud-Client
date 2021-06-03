@@ -43,8 +43,8 @@ export class LoginPageComponent implements OnInit {
 
       console.log(res);
 
-      this.cookie.set("@cloud/token", res.token, { domain: "localhost", path: '/' });
-      this.cookie.set("@cloud/refresh", res.refresh, { domain: "localhost", path: '/' });
+      this.cookie.set("cloud-token", res.token, { domain: "localhost", path: '/' });
+      this.cookie.set("cloud-refresh", res.refresh, { domain: "localhost", path: '/' });
       this._user.setUser(res.token);
       this.router.navigate(["/home"])
     })
