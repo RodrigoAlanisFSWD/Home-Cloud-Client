@@ -8,11 +8,15 @@
 
 
 
-    <app-input placeholder="Username" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
-    <app-input placeholder="Password" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
+    <app-input control="username" [form]="form" placeholder="Username" errorMsg="Username: Min 4 Characters!"
+    [error]="(form.get('username')?.hasError('required') || form.get('username')?.hasError('minlength')) && form.get('username')?.touched" placeholder="Username" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
+    <app-input control="password" [form]="form" placeholder="Password" errorMsg="Username: Min 4 Characters!"
+    [error]="(form.get('password')?.hasError('required') || form.get('password')?.hasError('minlength')) && form.get('password')?.touched" placeholder="Password" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
 
-    <app-button class="mt-12 w-full lg:w-3/4 xl:w-2/4" [primary]="true" text="Send"></app-button>
-
+    <app-button (click)="submit(form.value)" class="mt-12 w-full lg:w-3/4 xl:w-2/4" [primary]="true" text="Send"></app-button>
+    <div class="w-full lg:w-3/4 xl:w-2/4 bg-red-600 mt-2 rounded p-2 text-white" *ngIf="error != null">
+      {{ error === 101 || error === 102 ? 'The Credentials Are Invalid' : 'Error By Register The User' }}
+    </div>
 
     <app-link path="/auth/register" txt="Register" class="w-full lg:w-3/4 xl:w-2/4 mt-2" justify="end"></app-link>
   </div>

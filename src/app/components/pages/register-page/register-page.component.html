@@ -1,18 +1,28 @@
 <div class="w-screen h-screen flex justify-center md:justify-center">
   <div class="w-0 lg:w-2/4 h-screen block" id="img"></div>
 
-  <div class="w-full md:w-3/4 lg:w-2/4 h-screen flex flex-col justify-center items-center p-5 lg:p-0">
+  <form [formGroup]="form"
+  id="form"
+    class="w-full md:w-3/4 lg:w-2/4 h-screen flex flex-col justify-center items-center p-5 lg:p-0">
     <h1 class="text-white text-4xl md:text-5xl mb-8 font-bold">
       Register
     </h1>
 
-    <app-file-input [error]="false" class="w-full lg:w-3/4 xl:w-2/4"></app-file-input>
-    <app-input placeholder="Username" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
-    <app-input placeholder="Password" class="w-full lg:w-3/4 xl:w-2/4"></app-input>
+    <app-file-input control="avatar" [form]="form" errorMsg="Select A Valid Avatar"
+      [error]="form.get('avatar')?.hasError('required')"
+      class="w-full lg:w-3/4 xl:w-2/4"></app-file-input>
+    <app-input control="username" [form]="form" placeholder="Username" errorMsg="Username: Min 4 Characters!"
+      [error]="(form.get('username')?.hasError('required') || form.get('username')?.hasError('minlength')) && form.get('username')?.touched"
+      class="w-full lg:w-3/4 xl:w-2/4"></app-input>
+    <app-input control="password" [form]="form" placeholder="Password" errorMsg="Password: Min 4 Characters!"
+      [error]="(form.get('password')?.hasError('required') || form.get('password')?.hasError('minlength')) && form.get('password')?.touched"
+      class="w-full lg:w-3/4 xl:w-2/4"></app-input>
 
-    <app-button class="mt-12 w-full lg:w-3/4 xl:w-2/4" [primary]="true" text="Send"></app-button>
-
+    <app-button (click)="submit(form.value)" class="mt-12 w-full lg:w-3/4 xl:w-2/4" [primary]="true" text="Send"></app-button>
+    <div class="w-full lg:w-3/4 xl:w-2/4 bg-red-600 mt-2 rounded p-2 text-white" *ngIf="error != null">
+      {{ error === 101 ? 'The Username Is Already Taken' : 'Error By Register The User' }}
+    </div>
 
     <app-link path="/auth/login" txt="Login" class="w-full lg:w-3/4 xl:w-2/4 mt-2" justify="start"></app-link>
-  </div>
+  </form>
 </div>
