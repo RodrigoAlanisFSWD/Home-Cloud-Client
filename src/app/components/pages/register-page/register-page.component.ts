@@ -33,32 +33,34 @@ export class RegisterPageComponent implements OnInit {
   }
 
   submit(data: Object) {
-    this._auth.register(data).subscribe((res: AuthResponse) => {
-      if (res.res != 100) {
-        this.error = res;
-        return
-      }
-
-      const form: HTMLFormElement = document.getElementById("form") as HTMLFormElement;
-
-      const formData = new FormData(form);
-
-      console.log(formData.get("avatar"));
-
-      console.log(res);
-
-      this._user.avatar(formData, res.token).subscribe((res: AuthResponse) => {
+    if (this.form.valid) {
+      this._auth.register(data).subscribe((res: AuthResponse) => {
         if (res.res != 100) {
-          this.error = res;
+          this.error = res.res;
           return
         }
-      });
 
-      this.cookie.set("cloud-token", res.token, {domain: "localhost", path: '/'});
-      this.cookie.set("cloud-refresh", res.refresh, {domain: "localhost", path: '/'});
-      this._user.setUser(res.token);
-      this.router.navigate(["/home"])
-    })
+        const form: HTMLFormElement = document.getElementById("form") as HTMLFormElement;
+
+        const formData = new FormData(form);
+
+        console.log(formData.get("avatar"));
+
+        console.log(res);
+
+        this._user.avatar(formData, res.token).subscribe((res: AuthResponse) => {
+          if (res.res != 100) {
+            this.error = res;
+            return
+          }
+        });
+
+        this.cookie.set("cloud-token", res.token, {domain: "localhost", path: '/'});
+        this.cookie.set("cloud-refresh", res.refresh, {domain: "localhost", path: '/'});
+        this._user.setUser(res.token);
+        this.router.navigate(["/home"])
+      })
+    }
   }
 
 }

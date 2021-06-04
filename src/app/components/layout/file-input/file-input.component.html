@@ -6,11 +6,11 @@
     Avatar
   </label>
   <div *ngIf="error" class="w-full h-auto bg-red-600 p-2 text-white rounded-b">
-    Please Enter A Valid Entry
+    Please Select An Avatar
   </div>
   <input [name]="control" [formControlName]="control" class="hidden" type="file" id="avatar">
   <span *ngIf="!error" class="text-gray-400 mt-1 text-left w-full">
-    File Selected: image.png
+    File Selected!
   </span>
 
 </div>

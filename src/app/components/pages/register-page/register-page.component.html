@@ -9,7 +9,7 @@
     </h1>
 
     <app-file-input control="avatar" [form]="form" errorMsg="Select A Valid Avatar"
-      [error]="form.get('avatar')?.hasError('required') && form.get('avatar')?.touched"
+      [error]="form.get('avatar')?.hasError('required')"
       class="w-full lg:w-3/4 xl:w-2/4"></app-file-input>
     <app-input control="username" [form]="form" placeholder="Username" errorMsg="Username: Min 4 Characters!"
       [error]="(form.get('username')?.hasError('required') || form.get('username')?.hasError('minlength')) && form.get('username')?.touched"
@@ -19,7 +19,9 @@
       class="w-full lg:w-3/4 xl:w-2/4"></app-input>
 
     <app-button (click)="submit(form.value)" class="mt-12 w-full lg:w-3/4 xl:w-2/4" [primary]="true" text="Send"></app-button>
-
+    <div class="w-full lg:w-3/4 xl:w-2/4 bg-red-600 mt-2 rounded p-2 text-white" *ngIf="error != null">
+      {{ error === 101 ? 'The Username Is Already Taken' : 'Error By Register The User' }}
+    </div>
 
     <app-link path="/auth/login" txt="Login" class="w-full lg:w-3/4 xl:w-2/4 mt-2" justify="start"></app-link>
   </form>

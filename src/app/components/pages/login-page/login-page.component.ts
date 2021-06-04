@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
   submit(data: Object) {
     this._auth.login(data).subscribe((res: AuthResponse) => {
       if (res.res != 100) {
-        this.error = res;
+        this.error = res.res;
         return
       }
 
