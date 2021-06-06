@@ -19,4 +19,4 @@ export class DeleteItemCloud implements Action {
 
 
 
-export type Actions = SetCloud;
+export type Actions = SetCloud | DeleteItemCloud;

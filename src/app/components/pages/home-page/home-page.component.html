@@ -1,21 +1,62 @@
-<div class="nav w-screen items-center h-20 flex justify-between">
-  <h1 class="col-span-2 ml-5 block text-white text-3xl font-bold">
-    SlimeCloud
-  </h1>
-  <div class="flex w-3/5 justify-end items-center h-full">
-    <app-button class="col-start-8 col-end-9 w-1/4 mr-5" [primary]="true" text="Upload"></app-button>
-    <app-button class="text-white col-start-9 col-end-10 w-1/4 mr-5" text="Create Dir"></app-button>
+<div [ngClass]="{'modal-on': mkdirModal ||  uploadModal, 'absolute': mkdirModal ||  uploadModal}">
+  <div class="nav w-screen items-center h-20 flex justify-between">
+    <h1 class="col-span-2 ml-5 block text-white text-3xl font-bold">
+      SlimeCloud
+    </h1>
+    <div class="flex w-3/5 justify-end items-center h-full">
+      <app-button (click)="back()" *ngIf="path !== '-'" class="col-start-8 col-end-9 w-1/4 mr-5 text-white" [primary]="false" text="Back"></app-button>
+      <app-button (click)="showUploadModal()" class="col-start-8 col-end-9 w-1/4 mr-5" [primary]="true" text="Upload"></app-button>
+      <app-button (click)="showMkdirModal()" class="text-white col-start-9 col-end-10 w-1/4 mr-5" text="Create Dir"></app-button>
 
-    <img class="rounded-full w-16 mr-5" [src]="user.avatar.replace('3', '5')" />
+      <img class="rounded-full w-16 mr-5" [src]="user.avatar.replace('3', '5')" />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-5 gap-8 mt-5 px-5">
+    <app-item [path]="path" *ngFor="let item of items" [item]="item"></app-item>
+  </div>
+
+</div>
+
+<div class="w-screen h-screen flex items-center justify-center" [ngClass]="{'hidden': !uploadModal}">
+  <div class="modal w-2/6 rounded" style="height: 285px;">
+    <div class="flex pt-8 px-8 justify-between items-center">
+      <h2 class="text-white text-2xl">
+        Upload File
+      </h2>
+      <div (click)="closeUploadModal()" class="flex items-center justify-center p-2 rounded-full text-center"
+        style="background-color: #434343; width: 24px; height: 24px;">
+        <span class="block text-white">
+          <i class="fas fa-times text-white text-sm"></i>
+        </span>
+      </div>
+    </div>
+    <form (ngSubmit)="upload()" [formGroup]="uploadForm" class="px-8" id="upload-form">
+      <app-file-input [error]="uploadForm.get('file')?.hasError('required')" [form]="uploadForm" control="file"
+        txt="Select A File" errorMsg="Please Select A File"></app-file-input>
+      <br>
+      <app-button [primary]="true" text="Upload"></app-button>
+    </form>
   </div>
 </div>
 
-<div class="grid grid-cols-5 gap-8 mt-5 px-5">
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
+<div class="w-screen h-screen flex items-center justify-center" [ngClass]="{'hidden': !mkdirModal}">
+  <div class="modal w-2/6 rounded" style="height: 285px;">
+    <div class="flex pt-8 px-8 justify-between items-center">
+      <h2 class="text-white text-2xl">
+        Create A Dir
+      </h2>
+      <div (click)="closeMkdirModal()" class="flex items-center justify-center p-2 rounded-full text-center"
+        style="background-color: #434343; width: 24px; height: 24px;">
+        <span class="block text-white">
+          <i class="fas fa-times text-white text-sm"></i>
+        </span>
+      </div>
+    </div>
+    <form (ngSubmit)="mkdir(mkdirForm.value)" [formGroup]="mkdirForm" class="px-8">
+      <app-input placeholder="Enter A Name" [error]="mkdirForm.get('name')?.hasError('required') && mkdirForm.get('name')?.touched" [form]="mkdirForm" control="name" errorMsg="Please Enter A Name"></app-input>
+      <br>
+      <app-button [primary]="true" text="Upload"></app-button>
+    </form>
+  </div>
 </div>

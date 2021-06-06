@@ -12,6 +12,7 @@ export class FileInputComponent implements OnInit {
   @Input() control: string = "avatar";
   @Input() errorMsg: string = "";
   @Input() form: any;
+  @Input() txt: string = "";
 
   constructor(private _fb: FormBuilder) {
   }
