@@ -7,3 +7,11 @@
   height: 300px;
 }
 
+.modal {
+  background-color: #262626;
+  z-index: 1000
+}
+
+.modal-on {
+  opacity: 0.4;
+}

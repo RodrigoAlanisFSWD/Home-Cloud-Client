@@ -8,7 +8,7 @@
       Register
     </h1>
 
-    <app-file-input control="avatar" [form]="form" errorMsg="Select A Valid Avatar"
+    <app-file-input errorMsg="Please Select A File!" txt="Select An Avatar" control="avatar" [form]="form" errorMsg="Select A Valid Avatar"
       [error]="form.get('avatar')?.hasError('required')"
       class="w-full lg:w-3/4 xl:w-2/4"></app-file-input>
     <app-input control="username" [form]="form" placeholder="Username" errorMsg="Username: Min 4 Characters!"

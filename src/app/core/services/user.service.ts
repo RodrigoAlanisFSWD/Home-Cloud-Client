@@ -23,7 +23,7 @@ export class UserService {
     private store: Store<AppState>
   ) { }
 
-  avatar(data: FormData, token: string): Observable<any> {
+  avatar(data: FormData, token: string = ""): Observable<any> {
     return this._http.post<UserResponse>(this.url + "avatar", data, {
       headers: {
         "Authorization": "Bearer " + token
@@ -31,7 +31,7 @@ export class UserService {
     });
   }
 
-  profile(token: string): Observable<any> {
+  profile(token: string = ""): Observable<any> {
     return this._http.get<UserResponse>(this.url + "profile", {
       headers: {
         "Authorization": "Bearer " + token
